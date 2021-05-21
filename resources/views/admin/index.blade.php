@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard Player')
+@section('title', 'Dashboard Admin')
 
 @section('content')
     @if (Session::has('username'))
@@ -11,9 +11,7 @@
                     <li>Selamat datang {{ Session::get('role') }}</li>
                 </ul>
         </div>
-    @else
-        
-    @endif
+    @endif     
 
     <div class="row">
         <div class="col-lg-12 margin-tb">

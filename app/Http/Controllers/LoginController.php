@@ -8,9 +8,13 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
-        return view('login.form');
+        if ($request->session()->has('username')) {
+            return redirect()->back();
+        } else {
+            return view('login.form');
+        }
     }
 
     public function authenticate(Request $request)
@@ -21,27 +25,37 @@ class LoginController extends Controller
         if (Auth::guard('admin')->attempt([
                 'username'     => $username,
                 'password'     => $password,
-                'id_tipe_user' => 1,
+                'id_tipe_user' => 1
             ]))
         {
-            $request->session()->regenerate();
-
-            return redirect()->route('admin');
+            $request->session()->put([
+                'username' => $username, 
+                'role'     => 'admin'
+            ]);
+            return redirect()->route('admin.index');
         }
 
         if (Auth::guard('player')->attempt([
                 'username'     => $username,
                 'password'     => $password,
-                'id_tipe_user' => 2,
+                'id_tipe_user' => 2
             ]))
         {
-            $request->session()->regenerate();
-
-            return redirect()->route('player');
+            $request->session()->put([
+                'username' => $username, 
+                'role'     => "player"
+            ]);
+            return redirect()->route('player.index');
         }
 
         return back()->withErrors([
             'eror' => 'Username atau password salah.'
         ]);
+    }
+
+    public function logout(Request $request)
+    {
+        $request->session()->forget('username', 'role');
+        return redirect()->route('login.form');
     }
 }

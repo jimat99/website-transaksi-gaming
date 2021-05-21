@@ -28,24 +28,25 @@ Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
 //
 
-// Route login
+// Route login dan logout
 Route::get('/login', [LoginController::class, 'showLoginForm'])
     ->name('login.form');
 
 Route::post('/login', [LoginController::class, 'authenticate'])
     ->name('login.authenticate');
+
+Route::get('/logout', [LoginController::class, 'logout'])
+    ->name('login.logout');
 //
 
 // Route admin
-Route::get('/admin', function() {
-    return "Admin";
-})->name('admin');
+Route::get('/admin', [AdminController::class, 'index'])
+    ->name('admin.index');
 //
 
 // Route player
-Route::get('/player', function() {
-    return "Player";
-})->name('player');
+Route::get('/player', [PlayerController::class, 'index'])
+    ->name('player.index');
 //
 
 // Route::match(['put', 'patch'], '/admin/player/{player}', [PlayerController::class, 'update'])
