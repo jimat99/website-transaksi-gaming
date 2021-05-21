@@ -9,9 +9,12 @@ class PlayerController extends Controller
 {
     public function index(Request $request)
     {
+        $username = $request->session()->get('username');
+        $player   = $this->findPlayerByUsername($username);
+
         if ($request->session()->has('username')) {
             if ($request->session()->get('role') == 'player') {
-                return view('player.index');
+                return view('player.index', ['player' => $player]);
             } else {
                 return redirect()->back();
             }
@@ -37,7 +40,7 @@ class PlayerController extends Controller
         Player::create($request->all());
 
         return redirect()->route('player.index')
-            ->with('success', "Player berhasil didaftarkan");
+            ->with('sukses', "Register player berhasil");
     }
 
     public function show($id)
@@ -73,5 +76,11 @@ class PlayerController extends Controller
 
         return redirect()->route('player.index')
             ->with('success', 'Player berhasil dihapus');
+    }
+
+    private function findPlayerByUsername($username)
+    {
+        $player = Player::where('username', $username)->first();
+        return $player;
     }
 }
