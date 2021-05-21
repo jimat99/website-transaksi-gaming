@@ -15,16 +15,29 @@ class LoginController extends Controller
 
     public function authenticate(Request $request)
     {
-        $dataLogin = [
-            'username' => $request->input('username'),
-            'password' => $request->input('password'),
-            'id_tipe_user'
-        ];
+        $username = $request->input('username');
+        $password = $request->input('password');
 
-        if (Auth::attempt($dataLogin)) {
+        if (Auth::guard('admin')->attempt([
+                'username'     => $username,
+                'password'     => $password,
+                'id_tipe_user' => 1,
+            ]))
+        {
             $request->session()->regenerate();
 
-            return redirect()->route('sukses');
+            return redirect()->route('admin');
+        }
+
+        if (Auth::guard('player')->attempt([
+                'username'     => $username,
+                'password'     => $password,
+                'id_tipe_user' => 2,
+            ]))
+        {
+            $request->session()->regenerate();
+
+            return redirect()->route('player');
         }
 
         return back()->withErrors([

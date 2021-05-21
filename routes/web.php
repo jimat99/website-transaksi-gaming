@@ -40,13 +40,22 @@ Route::get('/sukses', function() {
 })->name('sukses');
 //
 
-// Route player
-Route::match(['put', 'patch'], '/admin/player/{player}', [PlayerController::class, 'update'])
-    ->name('player.update');
+// Route admin
+Route::get('/admin', function() {
+    return "Admin";
+})->name('admin');
 
-Route::group(['prefix' => 'admin'], function () {
-    //Route::resource('player', PlayerController::class);
-    Route::get('/player', [PlayerController::class, 'index'])
-        ->name('player.index');
-});
+// Route player
+Route::get('/player', function() {
+    return "Player";
+})->name('player');
+
+// Route::match(['put', 'patch'], '/admin/player/{player}', [PlayerController::class, 'update'])
+//     ->name('player.update');
+
+// Route::group(['prefix' => 'admin'], function () {
+//     //Route::resource('player', PlayerController::class);
+//     Route::get('/player', [PlayerController::class, 'index'])
+//         ->name('player.index');
+// });
 //
