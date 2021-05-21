@@ -16,8 +16,8 @@ class Player extends Authenticable
         return $this->hasMany(Transaksi::class, 'id_player', 'id_player');
     }
 
-    public function tipe_user()
+    public function role()
     {
-        return $this->belongsTo(TipeUser::class, 'id_tipe_user', 'id_tipe_user');
+        return $this->belongsTo(Role::class, 'id_role', 'id_role');
     }
 }

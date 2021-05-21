@@ -11,8 +11,8 @@ class Admin extends Authenticable
     protected $guarded    = [''];
     public $timestamps    = false;
 
-    public function tipe_user()
+    public function role()
     {
-        return $this->belongsTo(TipeUser::class, 'id_tipe_user', 'id_tipe_user');
+        return $this->belongsTo(Role::class, 'id_role', 'id_role');
     }
 }

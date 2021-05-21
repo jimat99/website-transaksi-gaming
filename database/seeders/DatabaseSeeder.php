@@ -15,48 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // Seeder tipe user
-        DB::table('tipe_user')->insert([
+        // Seeder role
+        DB::table('role')->insert([
             'nama' => 'admin'
         ]);
 
-        DB::table('tipe_user')->insert([
+        DB::table('role')->insert([
             'nama' => 'player'
-        ]);
-        //
-        
-        // Seeder admin
-        DB::table('admin')->insert([
-            'email'        => 'admin@gmail.com',
-            'username'     => 'admin',
-            'password'     => Hash::make('admin'),
-            'id_tipe_user' => 1
-        ]);
-        //
-
-        // Seeder player
-        DB::table('player')->insert([
-            'email'    => 'iqbal@gmail.com',
-            'username' => 'iqbal',
-            'password' => Hash::make('iqbal'),
-            'cash'     => 1000,
-            'id_tipe_user' => 2
-        ]);
-        
-        DB::table('player')->insert([
-            'email'    => 'nicholas@gmail.com',
-            'username' => 'nicholas',
-            'password' => Hash::make('nicholas'),
-            'cash'     => 2000,
-            'id_tipe_user' => 2
-        ]);
-
-        DB::table('player')->insert([
-            'email'    => 'bima@gmail.com',
-            'username' => 'bima',
-            'password' => Hash::make('bima'),
-            'cash'     => 3000,
-            'id_tipe_user' => 2
         ]);
         //
 
@@ -74,6 +39,41 @@ class DatabaseSeeder extends Seeder
         DB::table('item')->insert([
             'nama'  => 'Orcish Voucher',
             'harga' => 700
+        ]);
+        //
+        
+        // Seeder admin
+        DB::table('admin')->insert([
+            'email'    => 'admin@gmail.com',
+            'username' => 'admin',
+            'password' => Hash::make('admin1234'),
+            'id_role'  => 1
+        ]);
+        //
+
+        // Seeder player
+        DB::table('player')->insert([
+            'email'    => 'iqbal@gmail.com',
+            'username' => 'iqbal',
+            'password' => Hash::make('iqbal1234'),
+            'cash'     => 1000,
+            'id_role'  => 2
+        ]);
+        
+        DB::table('player')->insert([
+            'email'    => 'nicholas@gmail.com',
+            'username' => 'nicholas',
+            'password' => Hash::make('nicholas1234'),
+            'cash'     => 2000,
+            'id_role'  => 2
+        ]);
+
+        DB::table('player')->insert([
+            'email'    => 'bima@gmail.com',
+            'username' => 'bima',
+            'password' => Hash::make('bima1234'),
+            'cash'     => 3000,
+            'id_role'  => 2
         ]);
         //
     }

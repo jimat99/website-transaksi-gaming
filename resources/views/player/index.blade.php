@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="/logout" title="Logout"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="/logout" title="Logout">Logout</a>
             </div>
         </div>
     </div>

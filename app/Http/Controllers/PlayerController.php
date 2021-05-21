@@ -55,9 +55,9 @@ class PlayerController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'email'    => 'required',
+            'email'    => 'required|email',
             'username' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:8',
             'cash'     => 'required'
         ]);
 

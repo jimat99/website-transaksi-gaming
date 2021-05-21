@@ -23,9 +23,9 @@ class LoginController extends Controller
         $password = $request->input('password');
 
         if (Auth::guard('admin')->attempt([
-                'username'     => $username,
-                'password'     => $password,
-                'id_tipe_user' => 1
+                'username' => $username,
+                'password' => $password,
+                'id_role'  => 1
             ]))
         {
             $request->session()->put([
@@ -36,9 +36,9 @@ class LoginController extends Controller
         }
 
         if (Auth::guard('player')->attempt([
-                'username'     => $username,
-                'password'     => $password,
-                'id_tipe_user' => 2
+                'username' => $username,
+                'password' => $password,
+                'id_role'  => 2
             ]))
         {
             $request->session()->put([

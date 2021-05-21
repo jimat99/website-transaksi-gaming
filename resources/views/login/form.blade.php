@@ -9,7 +9,7 @@
                 <h2>Login</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="/register" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="/" title="Go back"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Password:</strong>
-                    <input type="text" name="password" class="form-control" placeholder="Password">
+                    <input type="password" name="password" class="form-control" placeholder="Password">
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

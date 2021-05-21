@@ -19,9 +19,8 @@ class CreatePlayerTable extends Migration
             $table->string('username');
             $table->string('password');
             $table->integer('cash')->default(0);
-            //$table->rememberToken();
-            $table->unsignedBigInteger('id_tipe_user')->default(2);
-            $table->foreign('id_tipe_user')->references('id_tipe_user')->on('tipe_user');
+            $table->unsignedBigInteger('id_role')->default(2);
+            $table->foreign('id_role')->references('id_role')->on('role');
         });
     }
 

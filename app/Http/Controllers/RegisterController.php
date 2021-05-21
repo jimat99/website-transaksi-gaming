@@ -8,9 +8,13 @@ use App\Models\Player;
 
 class RegisterController extends Controller
 {
-    public function create()
+    public function create(Request $request)
     {
-        return view('register.create');
+        if ($request->session()->has('username')) {
+            return redirect()->back();
+        } else {
+            return view('register.create');
+        }
     }
 
     public function store(Request $request)

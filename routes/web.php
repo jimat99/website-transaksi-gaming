@@ -18,7 +18,10 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-//Route::get('/', [DashboardController::class, 'index']);
+// Route dashboard
+Route::get('/', [DashboardController::class, 'index'])
+    ->name('dashboard.index');
+//
 
 // Route register
 Route::get('/register', [RegisterController::class, 'create'])
