@@ -18,8 +18,8 @@ class CreateAdminTable extends Migration
             $table->string('email');
             $table->string('username');
             $table->string('password');
-            $table->rememberToken();
-            $table->unsignedBigInteger('id_tipe_user');
+            //$table->rememberToken();
+            $table->unsignedBigInteger('id_tipe_user')->default(1);
             $table->foreign('id_tipe_user')->references('id_tipe_user')->on('tipe_user');
         });
     }
