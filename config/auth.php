@@ -14,11 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard'     => 'admin',
-        'passwords' => 'admin',
-
-        'guard'     => 'player',
-        'passwords' => 'player',
+        
     ],
 
     /*
@@ -41,19 +37,13 @@ return [
     'guards' => [
         'admin' => [
             'driver'   => 'session',
-            'provider' => 'admin',
+            'provider' => 'admin'
         ],
 
         'player' => [
             'driver'   => 'session',
-            'provider' => 'player',
-        ],
-
-        // 'api' => [
-        //     'driver' => 'token',
-        //     'provider' => 'users',
-        //     'hash' => false,
-        // ],
+            'provider' => 'player'
+        ]
     ],
 
     /*
@@ -76,18 +66,13 @@ return [
     'providers' => [
         'admin' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\Admin::class,
+            'model'  => App\Models\Admin::class
         ],
 
         'player' => [
             'driver' => 'eloquent',
-            'model'  => App\Models\Player::class,
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+            'model'  => App\Models\Player::class
+        ]
     ],
 
     /*

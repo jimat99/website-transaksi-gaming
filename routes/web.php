@@ -34,21 +34,19 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])
 
 Route::post('/login', [LoginController::class, 'authenticate'])
     ->name('login.authenticate');
-
-Route::get('/sukses', function() {
-    return "Sukses";
-})->name('sukses');
 //
 
 // Route admin
 Route::get('/admin', function() {
     return "Admin";
 })->name('admin');
+//
 
 // Route player
 Route::get('/player', function() {
     return "Player";
 })->name('player');
+//
 
 // Route::match(['put', 'patch'], '/admin/player/{player}', [PlayerController::class, 'update'])
 //     ->name('player.update');
