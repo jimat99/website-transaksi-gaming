@@ -9,16 +9,16 @@
                 <h2>Login</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="/" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('dashboard.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
 
-    @if (Session::has('sukses'))
+    @if (session()->has('sukses'))
         <div class="alert alert-success">
             <strong>Register Sukses</strong><br><br>
             <ul>
-                <li>{{ Session::get('sukses') }}</li>
+                <li>{{ session()->get('sukses') }}</li>
             </ul>
         </div>
     @endif
@@ -34,7 +34,7 @@
         </div>
     @endif
 
-    <form action="/login" method="POST">
+    <form action="{{ route('login.form') }}" method="POST">
         @csrf
 
         <div class="row">

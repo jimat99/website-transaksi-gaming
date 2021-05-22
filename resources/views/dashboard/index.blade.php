@@ -6,10 +6,10 @@
     <div class="row" style="margin-bottom: 20px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-right">
-                <a class="btn btn-primary" href="/register" title="Register">Register</a>
+                <a class="btn btn-primary" href="{{ route('register.create') }}" title="Register">Register</a>
             </div>
             <div class="pull-right" style="margin-right: 20px;">
-                <a class="btn btn-primary" href="/login" title="Login">Login</a>
+                <a class="btn btn-primary" href="{{ route('login.form') }}" title="Login">Login</a>
             </div>
         </div>
     </div>

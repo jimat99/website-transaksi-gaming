@@ -9,7 +9,7 @@
                 <h2>Register</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="/" title="Go back"> <i class="fas fa-backward "></i> </a>
+                <a class="btn btn-primary" href="{{ route('dashboard.index') }}" title="Go back"> <i class="fas fa-backward "></i> </a>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
         </div>
     @endif
 
-    <form action="/register" method="POST">
+    <form action="{{ route('register.store') }}" method="POST">
         @csrf
 
         <div class="row">
