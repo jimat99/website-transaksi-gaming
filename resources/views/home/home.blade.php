@@ -38,21 +38,20 @@
                 </div>
 
                 <div class="d-flex m-3">
-                    <form>
+                    <form action="{{ route('login.authenticate') }}" method="POST">
+                        @csrf
+
                         <div class="customtextbox mb-2">
                             <label for="username" class="customtextforlabel">Username</label>
-                            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+                            <input type="text" name="username" class="form-control" id="username" placeholder="Username">
                         </div>
                         <div class="customtextbox mb-3">
                             <label for="Password" class="customtextforlabel">Password</label>
-                            <input type="password" class="form-control" id="Password" placeholder="Password">
+                            <input type="password" name="password" class="form-control" id="Password" placeholder="Password">
                         </div>
-                            <button type="submit" class="btn customforbutton">Sign In</button>
-                        
+                        <button type="submit" class="btn customforbutton">Sign In</button>
                     </form>
                 </div>
-
-
             </div>
         </div>
         <div class="logincontainer">
@@ -124,7 +123,6 @@
                 </li>
             </ul>
         </div>
-
     </div>
 </div>
 @endsection

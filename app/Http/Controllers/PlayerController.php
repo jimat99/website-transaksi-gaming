@@ -19,7 +19,7 @@ class PlayerController extends Controller
                 return redirect()->back();
             }
         } else {
-            return redirect()->route('login.form');
+            return redirect()->route('home');
         }
     }
 
@@ -43,38 +43,38 @@ class PlayerController extends Controller
             ->with('sukses', "Register player berhasil");
     }
 
-    public function show($id)
-    {
-        //
-    }
+    // public function show($id)
+    // {
+    //     //
+    // }
 
-    public function edit($id)
-    {
-        $player = Player::findOrFail($id);
+    // public function edit($id)
+    // {
+    //     $player = Player::findOrFail($id);
         
-        return view('player.edit', compact('player'));
-    }
+    //     return view('player.edit', compact('player'));
+    // }
 
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'email'    => 'required|email',
-            'username' => 'required',
-            'password' => 'required|min:8',
-            'cash'     => 'required'
-        ]);
+    // public function update(Request $request, $id)
+    // {
+    //     $request->validate([
+    //         'email'    => 'required|email',
+    //         'username' => 'required',
+    //         'password' => 'required|min:8',
+    //         'cash'     => 'required'
+    //     ]);
 
-        Player::find($id)->update($request->all());
+    //     Player::find($id)->update($request->all());
 
-        return redirect()->route('player.index')
-            ->with('success', 'Player berhasil diupdate');
-    }
+    //     return redirect()->route('player.index')
+    //         ->with('success', 'Player berhasil diupdate');
+    // }
 
-    public function destroy($id)
-    {
-        Player::find($id)->delete();
+    // public function destroy($id)
+    // {
+    //     Player::find($id)->delete();
 
-        return redirect()->route('player.index')
-            ->with('success', 'Player berhasil dihapus');
-    }
+    //     return redirect()->route('player.index')
+    //         ->with('success', 'Player berhasil dihapus');
+    // }
 }

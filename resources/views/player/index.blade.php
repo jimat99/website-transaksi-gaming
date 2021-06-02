@@ -15,7 +15,7 @@
     </div>
     @if (session()->has('username'))
         <div class="alert alert-success">
-            <strong>Login Sukses</strong><br><br>
+            <!-- <strong>Login Sukses</strong><br><br> -->
                 <ul>
                     <li>Selamat datang {{ session()->get('username') }}</li>
                     <li>Selamat datang {{ session()->get('role') }}</li>

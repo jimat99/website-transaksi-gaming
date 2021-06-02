@@ -8,17 +8,22 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    public function showLoginForm(Request $request)
-    {
-        if ($request->session()->has('username')) {
-            return redirect()->back();
-        } else {
-            return view('login.form');
-        }
-    }
+    // public function showLoginForm(Request $request)
+    // {
+    //     if ($request->session()->has('username')) {
+    //         return redirect()->back();
+    //     } else {
+    //         return view('login.form');
+    //     }
+    // }
 
     public function authenticate(Request $request)
     {
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|min:8'
+        ]);
+
         $username = $request->input('username');
         $password = $request->input('password');
 
@@ -56,6 +61,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('username', 'role');
-        return redirect()->route('login.form');
+        return redirect()->route('home');
     }
 }

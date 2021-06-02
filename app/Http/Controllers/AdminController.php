@@ -15,7 +15,7 @@ class AdminController extends Controller
                 return redirect()->back();
             }
         } else {
-            return redirect()->route('login.form');
+            return redirect()->route('home');
         }
     }
 }
