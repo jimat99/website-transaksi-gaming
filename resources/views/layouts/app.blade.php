@@ -1,46 +1,43 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>RO - @yield('title')</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- LOCAL CSS --}}
+    <title>{{!empty($title_page) ? $title_page:''}} Ragnarok</title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('css/footercustom.css')}}">
+    <link rel="stylesheet" href="{{asset('css/homecontent.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slidercustom.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{asset('images/logo.png')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.css"
-        rel="stylesheet">
-
-    <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
-        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
-    </script>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
-        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
-    </script>
-
-    <style>
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #9C27B0;
-            color: white;
-            text-align: center;
-        }
-        body {
-            background-color:  #EDF7EF
-        }
-    </style>
+    {{-- AOS --}}
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    @stack('css')
 
 </head>
 
 <body>
-    @section('sidebar')
+    @include('layouts/header')
+    @yield('content')
 
-    @show
 
-    <div class="container">
-        @yield('content')
-    </div>
-    <div class="text-center footer">
-    </div>
+
+
+    @include('layouts/footer')
+
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v10.0" nonce="nYeutWQW"></script>
+   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

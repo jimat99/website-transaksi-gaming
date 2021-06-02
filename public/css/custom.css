@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@700&display=swap');
+
+@font-face {
+    font-family: 'cyber';
+    src: url('../fonts/cyberpunk-webfont.woff2') format('woff2'),
+         url('../fonts/cyberpunk-webfont.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'hansonbold';
+    src: url('../fonts/hanson-bold-webfont.woff2') format('woff2'),
+         url('../fonts/hanson-bold-webfont.woff') format('woff');
+}
+
+
+.bg-yellow{
+    background-color: #EEE500 !important;
+}
+.nav-link{
+    font-family: Hanson!important;
+    color: #183947 !important;
+    font-size: 12pt !important;
+}
+
+li .nav-link:hover{
+    color: #D23153!important;
+}
+
+.active{
+color: #D23153 !important;
+}
+.logo{
+    max-width: 20vw;
+    height: auto;
+}
+
+body{
+width: 100vh;
+min-height: 450vh;
+overflow-y: scroll;
+overflow-x: hidden;
+position: absolute;
+background-image:url('../images/tenor.gif');
+background-position: center;
+background-image: no-repeat;
+background-attachment: fixed;
+}
+
+@media (min-width:600px){
+    body{
+        width: 100%;
+        min-height: 300vh;
+    }
+
+}
+    
