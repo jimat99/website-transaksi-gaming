@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home.home');
 Route::view('donate', 'home.donate');
+Route::view('admin', 'admin.main.dashboard.index');

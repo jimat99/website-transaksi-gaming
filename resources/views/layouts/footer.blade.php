@@ -15,7 +15,7 @@
             <div class="col-md-2 col-sm-1 col-xs-1 mb-2"></div>
             <div class="col-md-2 col-sm-4 col-xs-4" data-aos="fade-left" data-aos-duration="500" data-aos-delay="350">
                 <h5 class="heading">Services</h5>
-                <ul class="hover">
+                <ul class="hover card-text">
                     <li>Register</li>
                     <li>Donate</li>
                     <li>Buy Items</li>
@@ -24,7 +24,7 @@
             </div>
             <div class="col-md-2 col-sm-4 col-xs-4" data-aos="fade-left" data-aos-duration="500" data-aos-delay="350">
                 <h5 class="heading">Features</h5>
-                <ul class="card-text">
+                <ul class="hover card-text">
                     <li>Finance</li>
                     <li>Public Sector</li>
                     <li>Smart Office</li>
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-2 col-sm-4 col-xs-4" data-aos="fade-left" data-aos-duration="500" data-aos-delay="350">
                 <h5 class="heading">Company</h5>
-                <ul class="card-text">
+                <ul class="hover card-text">
                     <li>About Us</li>
                     <li>Blog</li>
                     <li>Contact</li>
