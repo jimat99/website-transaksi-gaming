@@ -1,6 +1,6 @@
 @extends('admin/layouts/app')
 @section('content')
-    <!-- Begin Page Content -->
+<!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
@@ -22,7 +22,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{rand(0,99)}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">{{rand(0,99)}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                            <i class="fas fa-users fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -57,15 +57,9 @@
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{rand(0,99)}}</div>
                                 </div>
-                                <div class="col">
-                                    <div class="progress progress-sm mr-2">
-                                        <div class="progress-bar bg-info" role="progressbar"
-                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                            aria-valuemax="100"></div>
-                                    </div>
-                                </div>
+                               
                             </div>
                         </div>
                         <div class="col-auto">
@@ -83,11 +77,11 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                Total Admins</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{rand(0,99)}}</div>
                         </div>
                         <div class="col-auto">
-                            <i class="fas fa-box-open fa-2x text-gray-300"></i>
+                            <i class="fas fa-crown fa-2x text-gray-300"></i>
                         </div>
                     </div>
                 </div>
@@ -95,18 +89,67 @@
         </div>
     </div>
 
-    <!-- Content Row -->
 
-    
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
 
-    <!-- Content Row -->
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Admin Name</th>
+                            <th>Position</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Admin Name</th>
+                            <th>Position</th>
+                            <th>Age</th>
+                            <th>Start date</th>
+                            <th>Status</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr>
+                            <td>GM Panda</td>
+                            <td>GM Event</td>
+                            <td>35</td>
+                            <td>21/12/2021</td>
+                            <td class="text-center">
+                                <li class="btn btn-sm btn-success disabled">Active</li>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
     <div class="row">
 
-        
-        
 
-        
+
+
+
     </div>
+
 
 </div>
 

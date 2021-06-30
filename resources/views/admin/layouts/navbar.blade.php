@@ -5,7 +5,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-light accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('dashboardAdmin')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                   <i><img src="{{asset('images/logo.png')}}" alt="" class="customlogo"></i> 
                 </div>
@@ -17,7 +17,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="{{route('dashboardAdmin')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -40,8 +40,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Player Menu</h6>
-                        <a class="collapse-item" href="buttons.html">See Player</a>
-                        <a class="collapse-item" href="cards.html">Edit Player</a>
+                        <a class="collapse-item" href="{{route('player.index')}}">See Player</a>
                     </div>
                 </div>
             </li>
@@ -57,9 +56,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Item Menu</h6>
-                        <a class="collapse-item" href="utilities-color.html">Create Item</a>
-                        <a class="collapse-item" href="utilities-border.html">See Item</a>
-                        <a class="collapse-item" href="utilities-animation.html">Edit Item</a>
+                        <a class="collapse-item" href="{{route('item.index')}}">See Item</a>
+                        <a class="collapse-item" href="{{route('item.create')}}">Create Item</a>
                     </div>
                 </div>
             </li>
