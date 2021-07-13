@@ -21,5 +21,7 @@ Route::view('admin/seePlayer/edit', 'admin.main.managePlayer.edit')->name('playe
 Route::view('admin/seeItem', 'admin.main.item.index')->name('item.index');
 Route::view('admin/seeItem/create', 'admin.main.item.create')->name('item.create');
 Route::view('admin/seeItem/edit', 'admin.main.item.edit')->name('item.edit');
+Route::view('register', 'home.register');
+Route::view('buy-items', 'home.items');
 
 

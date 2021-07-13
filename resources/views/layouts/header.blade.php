@@ -15,10 +15,10 @@
             <a class="nav-link {{request()->is('donate') ? ' active' : ''}}" href="/donate">Donate</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Buy Items</a>
+            <a class="nav-link {{request()->is('register') ? ' active' : ''}}" href="/buy-items">Buy Items</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link {{request()->is('register') ? ' active' : ''}}" href="/register">Register</a>
           </li>
         </ul>
       </div>
