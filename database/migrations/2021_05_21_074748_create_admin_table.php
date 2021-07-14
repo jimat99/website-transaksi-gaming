@@ -18,6 +18,10 @@ class CreateAdminTable extends Migration
             $table->string('email');
             $table->string('username');
             $table->string('password');
+            $table->string('position');
+            $table->integer('age');
+            $table->date('start_date')->default(now());
+            $table->tinyInteger('status')->default(1);
             $table->unsignedBigInteger('id_role')->default(1);
             $table->foreign('id_role')->references('id_role')->on('role');
         });

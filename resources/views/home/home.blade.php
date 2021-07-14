@@ -27,6 +27,7 @@
 <div class="servercontainer mx-auto mt-2">
     <div class="d-flex flex-column rounded">
         <div class="logincontainer mb-1 p-2">
+            @if (Auth::guard('player')->check() != 1)
             <div class="d-flex flex-column">
 
                 <div class="mx-auto">
@@ -53,6 +54,7 @@
                     </form>
                 </div>
             </div>
+            @endif
         </div>
         <div class="logincontainer">
             <div class="fb-page" data-href="https://www.facebook.com/MemeRepostIndonesia/" data-tabs="timeline"

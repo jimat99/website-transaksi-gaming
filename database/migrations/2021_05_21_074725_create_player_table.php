@@ -18,7 +18,10 @@ class CreatePlayerTable extends Migration
             $table->string('email');
             $table->string('username');
             $table->string('password');
+            $table->enum('gender', ['Male', 'Female']);
+            $table->date('birth_date');
             $table->integer('cash')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->unsignedBigInteger('id_role')->default(2);
             $table->foreign('id_role')->references('id_role')->on('role');
         });

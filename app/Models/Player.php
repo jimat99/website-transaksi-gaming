@@ -11,11 +11,6 @@ class Player extends Authenticable
     protected $guarded    = [''];
     public $timestamps    = false;
 
-    public function transaksi()
-    {
-        return $this->hasMany(Transaksi::class, 'id_player', 'id_player');
-    }
-
     public function role()
     {
         return $this->belongsTo(Role::class, 'id_role', 'id_role');

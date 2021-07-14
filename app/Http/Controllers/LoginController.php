@@ -8,20 +8,11 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    // public function showLoginForm(Request $request)
-    // {
-    //     if ($request->session()->has('username')) {
-    //         return redirect()->back();
-    //     } else {
-    //         return view('login.form');
-    //     }
-    // }
-
     public function authenticate(Request $request)
     {
         $request->validate([
             'username' => 'required',
-            'password' => 'required|min:8'
+            'password' => 'required'
         ]);
 
         $username = $request->input('username');
@@ -33,11 +24,7 @@ class LoginController extends Controller
                 'id_role'  => 1
             ]))
         {
-            $request->session()->put([
-                'username' => $username, 
-                'role'     => 'admin'
-            ]);
-            return redirect()->route('admin.index');
+            return redirect()->route('admin.dashboard.index');
         }
 
         if (Auth::guard('player')->attempt([
@@ -46,11 +33,7 @@ class LoginController extends Controller
                 'id_role'  => 2
             ]))
         {
-            $request->session()->put([
-                'username' => $username, 
-                'role'     => "player"
-            ]);
-            return redirect()->route('player.index');
+            return redirect()->route('home');
         }
 
         return back()->withErrors([
@@ -60,7 +43,8 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        $request->session()->forget('username', 'role');
+        Auth::guard('admin')->logout();
+        Auth::guard('player')->logout();
         return redirect()->route('home');
     }
 }

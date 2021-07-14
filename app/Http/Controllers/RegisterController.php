@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Player;
 
 class RegisterController extends Controller
 {
     public function create(Request $request)
     {
-        if ($request->session()->has('username')) {
+        if (Auth::guard('admin')->check() == 1 ||
+            Auth::guard('player')->check() == 1
+        ) {
             return redirect()->back();
         } else {
             return view('register.create');
@@ -31,7 +34,6 @@ class RegisterController extends Controller
             'password' => Hash::make($request->input('password'))
         ]);
 
-        return redirect()->route('login.form')
-            ->with('sukses', "Selamat, register Anda berhasil. Silahkan melakukan login!");
+        return redirect()->route('login.form');
     }
 }

@@ -3,29 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Player;
+use App\Models\Item;
 
 class PlayerController extends Controller
 {
     public function index(Request $request)
     {
-        $username = $request->session()->get('username');
-        $player   = Player::where('username', $username)->first();
-
-        if ($request->session()->has('username')) {
-            if ($request->session()->get('role') == 'player') {
-                return view('player.index', ['player' => $player]);
-            } else {
-                return redirect()->back();
-            }
-        } else {
-            return redirect()->route('home');
+        if (Auth::guard('admin')->check() == 1) {
+            $listPlayer = Player::all();
+            return view('admin.main.managePlayer.index', compact('listPlayer'));
+        } 
+        
+        if (Auth::guard('player')->check() == 1) {
+            return redirect()->back();
         }
+
+        return redirect()->route('home');
     }
 
-    public function create()
+    public function create(Request $request)
     {
-        return view('player.create');
+        if (Auth::guard('admin')->check() == 1 ||
+            Auth::guard('player')->check() == 1    
+        ) {
+            return redirect()->back();
+        } else {
+            return view('home.register');
+        }
     }
 
     public function store(Request $request)
@@ -33,48 +40,70 @@ class PlayerController extends Controller
         $request->validate([
             'email'    => 'required|email',
             'username' => 'required',
-            'password' => 'required|min:8',
-            'cash'     => 'required'
+            'password' => 'required'
         ]);
 
-        Player::create($request->all());
+        Player::create([
+            'email'      => $request->input('email'),
+            'username'   => $request->input('username'),
+            'password'   => Hash::make($request->input('password')),
+            'gender'     => $request->input('gender'),
+            'birth_date' => date_format(date_create_from_format('d/m/Y', $request->input('birth_date')), 'Y-m-d')
+        ]);
 
-        return redirect()->route('player.index')
-            ->with('sukses', "Register player berhasil");
+        return redirect()->route('home');
     }
 
-    // public function show($id)
-    // {
-    //     //
-    // }
 
-    // public function edit($id)
-    // {
-    //     $player = Player::findOrFail($id);
+    public function edit(Request $request, $id)
+    {
+        if (Auth::guard('admin')->check() == 1) {
+            $player = Player::where('id_player', $id)->first();
+            return view('admin.main.managePlayer.edit', compact('player'));
+        } 
         
-    //     return view('player.edit', compact('player'));
-    // }
+        if (Auth::guard('player')->check() == 1) {
+            return redirect()->back();
+        }
 
-    // public function update(Request $request, $id)
-    // {
-    //     $request->validate([
-    //         'email'    => 'required|email',
-    //         'username' => 'required',
-    //         'password' => 'required|min:8',
-    //         'cash'     => 'required'
-    //     ]);
+        return redirect()->route('home');
+    }
 
-    //     Player::find($id)->update($request->all());
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'cash'   => 'required',
+            'status' => 'required'
+        ]);
 
-    //     return redirect()->route('player.index')
-    //         ->with('success', 'Player berhasil diupdate');
-    // }
+        Player::where('id_player', $id)->update([
+            'cash'   => $request->input('cash'),
+            'status' => $request->input('status')
+        ]);
 
-    // public function destroy($id)
-    // {
-    //     Player::find($id)->delete();
+        return redirect()->route('admin.player.index');
+    }
 
-    //     return redirect()->route('player.index')
-    //         ->with('success', 'Player berhasil dihapus');
-    // }
+    public function formBuyItem()
+    {   
+        if (Auth::guard('admin')->check() == 1) {
+            return redirect()->back();
+        }
+
+        $listItem = Item::all();
+
+        return view('home.items', compact('listItem'));
+    }
+
+    public function buyItem(Request $request)
+    {   
+        $item = Item::where('id_item', $request->input('id_item'))->first();
+
+        $player = Player::where('id_player', Auth::guard('player')->user()->id_player)->first();
+
+        Player::where('id_player', Auth::guard('player')->user()->id_player)
+            ->update(['cash' => $player->cash - $item->harga]);
+
+        return redirect()->route('home.buy-item.form-buy-item');
+    }
 }

@@ -17,7 +17,7 @@
     background-color: #EEE500 !important;
 }
 .nav-link{
-    font-family: hansonbold!important;
+    font-family: hansonbold !important;
     color: #183947 !important;
     font-size: 12pt !important;
 }
@@ -33,6 +33,7 @@ color: #D23153 !important;
     max-width: 20vw;
     height: auto;
 }
+
 
 body{
 width: 100vh;

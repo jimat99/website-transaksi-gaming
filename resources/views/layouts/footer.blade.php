@@ -1,6 +1,6 @@
 
 <div class="navbar-static-bottom footer" data-aos="fade-up" data-aos-duration="2000">
-    <div class="cointer card">
+    <div class="card">
         <div class="row mb-4 ">
             <div class="col-md-4 col-sm-11 col-xs-11">
                 <div class="footer-text pull-left" data-aos="fade-right" data-aos-duration="500" data-aos-delay="350">

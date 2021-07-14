@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        if ($request->session()->has('username')) {
+        if (Auth::guard('admin')->check() == 1) {
             return redirect()->back();
         } else {
             return view('home.home');
@@ -17,6 +18,10 @@ class HomeController extends Controller
 
     public function donate()
     {
-        return view('home.donate');
+        if (Auth::guard('admin')->check() == 1) {
+            return redirect()->back();
+        } else {
+            return view('home.donate');
+        }
     }
 }

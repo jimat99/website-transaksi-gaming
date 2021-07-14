@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PlayerController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,23 +25,15 @@ Route::get('/', [HomeController::class, 'index'])
     ->name('home');
 //
 
-// Route donate
-Route::get('/donate', [HomeController::class, 'donate'])
-    ->name('donate');
-//
+// Route register untuk player
+Route::get('/register', [PlayerController::class, 'create'])
+    ->name('home.register.create');
 
-// Route register
-Route::get('/register', [RegisterController::class, 'create'])
-    ->name('register.create');
-
-Route::post('/register', [RegisterController::class, 'store'])
-    ->name('register.store');
+Route::post('/register', [PlayerController::class, 'store'])
+    ->name('home.register.store');
 //
 
 // Route login dan logout
-// Route::get('/login', [LoginController::class, 'showLoginForm'])
-//     ->name('login.form');
-
 Route::post('/login', [LoginController::class, 'authenticate'])
     ->name('login.authenticate');
 
@@ -48,12 +41,51 @@ Route::get('/logout', [LoginController::class, 'logout'])
     ->name('login.logout');
 //
 
-// Route admin
-Route::get('/admin', [AdminController::class, 'index'])
-    ->name('admin.index');
+// Route donate
+Route::get('/donate', [HomeController::class, 'donate'])
+    ->name('donate');
 //
 
-// Route player
-Route::get('/player', [PlayerController::class, 'index'])
-    ->name('player.index');
+// Route dashboard admin
+Route::get('/admin', [AdminController::class, 'index'])
+    ->name('admin.dashboard.index');
+//
+
+// Route item untuk admin
+Route::get('/admin/item', [ItemController::class, 'index'])
+    ->name('admin.item.index');
+
+Route::get('/admin/item/create', [ItemController::class, 'create'])
+    ->name('admin.item.create');
+
+Route::post('/admin/item', [ItemController::class, 'store'])
+    ->name('admin.item.store');
+
+Route::get('/admin/item/{id}/edit', [ItemController::class, 'edit'])
+    ->name('admin.item.edit');
+
+Route::put('/admin/item/{id}', [ItemController::class, 'update'])
+    ->name('admin.item.update');
+
+Route::delete('/admin/item/{id}', [ItemController::class, 'destroy'])
+    ->name('admin.item.destroy');
+//
+
+// Route player untuk admin
+Route::get('/admin/player', [PlayerController::class, 'index'])
+    ->name('admin.player.index');
+
+Route::get('/admin/player/{id}/edit', [PlayerController::class, 'edit'])
+    ->name('admin.player.edit');
+
+Route::put('/admin/player/{id}', [PlayerController::class, 'update'])
+    ->name('admin.player.update');
+//
+
+// Route buy item untuk player
+Route::get('/buy-items', [PlayerController::class, 'formBuyItem'])
+    ->name('home.buy-item.form-buy-item');
+
+Route::post('/buy-items', [PlayerController::class, 'buyItem'])
+    ->name('home.buy-item.buy-item');
 //

@@ -10,9 +10,4 @@ class Item extends Model
     protected $primaryKey = 'id_item';
     protected $guarded    = [''];
     public $timestamps    = false;
-
-    public function transaksi()
-    {
-        return $this->hasMany(Transaksi::class, 'id_item', 'id_item');
-    }
 }

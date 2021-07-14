@@ -17,6 +17,8 @@ class CreateItemTable extends Migration
             $table->id('id_item');
             $table->string('nama');
             $table->integer('harga');
+            $table->string('path_gambar');
+            $table->text('deskripsi');
         });
     }
 
