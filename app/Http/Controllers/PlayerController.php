@@ -97,13 +97,18 @@ class PlayerController extends Controller
 
     public function buyItem(Request $request)
     {   
-        $item = Item::where('id_item', $request->input('id_item'))->first();
+        if (Auth::guard('player')->check() == 1) {
+            $item = Item::where('id_item', $request->input('id_item'))->first();
 
-        $player = Player::where('id_player', Auth::guard('player')->user()->id_player)->first();
+            $player = Player::where('id_player', Auth::guard('player')->user()->id_player)->first();
 
-        Player::where('id_player', Auth::guard('player')->user()->id_player)
-            ->update(['cash' => $player->cash - $item->harga]);
+            Player::where('id_player', Auth::guard('player')->user()->id_player)
+                ->update(['cash' => $player->cash - $item->harga]);
 
-        return redirect()->route('home.buy-item.form-buy-item');
+            return redirect()->route('home.buy-item.form-buy-item');
+        } else {
+            return redirect()->route('home.buy-item.form-buy-item')
+                ->with('message', 'Silahkan login terlebih dahulu!');
+        }
     }
 }

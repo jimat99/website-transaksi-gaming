@@ -15,7 +15,7 @@
             <a class="nav-link {{request()->is('donate') ? ' active' : ''}}" href="{{ route('donate') }}">Donate</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{request()->is('buy-items') ? ' active' : ''}}" href="/buy-items">Buy Items</a>
+            <a class="nav-link {{request()->is('buy-items') ? ' active' : ''}}" href="{{ route('home.buy-item.form-buy-item') }}">Buy Items</a>
           </li>
 		  
 		  @if (Auth::guard('player')->check() == 1)

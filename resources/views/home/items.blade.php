@@ -1,10 +1,10 @@
 @extends('layouts/app')
 @section('content')
-<div class="container mx-auto text-center">
+<div class="container mx-auto">
     <div class="d-flex justify-content-between">
         <div class="row row-cols-3 mt-5 mb-5 mx-auto">
             @foreach ($listItem as $item)
-            <div class="col-sm-4">
+            <div class="col-lg">
                 <form action="{{ route('home.buy-item.buy-item') }}" method="post">
                     @csrf
 
@@ -26,4 +26,8 @@
         </div>
     </div>
 </div>
+
+@if (Session::has('message'))
+    <script>alert("{{ Session::get('message') }}");</script>
+@endif
 @endsection
